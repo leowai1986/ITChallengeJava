@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.7.0.v201706222054</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">251</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">251</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">251</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/first_report.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.firstreport</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">120</property>
+    <parameters>
+        <scalar-parameter name="idAlumno" id="310">
+            <text-property name="promptText">idAlumno</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">1</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">#0</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="250">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/postgres</property>
+            <property name="odaUser">postgres</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.SPSelectDataSet" name="estadoAlumno" id="251">
+            <list-property name="columnHints"/>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">idAlumno</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">3</expression>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">tipodoc</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">documento</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">nombre</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">apellido</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">legajo</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">nombrec</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">fechainscripcionc</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nombrea</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">fechainscripciona</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">tipodoc</property>
+                    <property name="nativeName">tipodoc</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">documento</property>
+                    <property name="nativeName">documento</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">nombre</property>
+                    <property name="nativeName">nombre</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">apellido</property>
+                    <property name="nativeName">apellido</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">legajo</property>
+                    <property name="nativeName">legajo</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">nombrec</property>
+                    <property name="nativeName">nombrec</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">fechainscripcionc</property>
+                    <property name="nativeName">fechainscripcionc</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nombrea</property>
+                    <property name="nativeName">nombrea</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">fechainscripciona</property>
+                    <property name="nativeName">fechainscripciona</property>
+                    <property name="dataType">date</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * from public.estadoalumno(?)]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="110">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="245">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">x-large</property>
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Estado Alumno</text-property>
+        </label>
+        <table id="252">
+            <property name="dataSet">estadoAlumno</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">tipodoc</property>
+                    <text-property name="displayName">tipodoc</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["tipodoc"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">documento</property>
+                    <text-property name="displayName">documento</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["documento"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">nombre</property>
+                    <text-property name="displayName">nombre</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nombre"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">apellido</property>
+                    <text-property name="displayName">apellido</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["apellido"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">legajo</property>
+                    <text-property name="displayName">legajo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["legajo"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">nombrec</property>
+                    <text-property name="displayName">nombrec</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nombrec"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">fechainscripcionc</property>
+                    <text-property name="displayName">fechainscripcionc</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fechainscripcionc"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">nombrea</property>
+                    <text-property name="displayName">nombrea</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nombrea"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">fechainscripciona</property>
+                    <text-property name="displayName">fechainscripciona</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fechainscripciona"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+            </list-property>
+            <column id="301"/>
+            <column id="302"/>
+            <column id="303"/>
+            <column id="304"/>
+            <column id="305"/>
+            <column id="306"/>
+            <column id="307"/>
+            <column id="308"/>
+            <column id="309"/>
+            <header>
+                <row id="253">
+                    <cell id="254">
+                        <label id="255">
+                            <text-property name="text">tipodoc</text-property>
+                        </label>
+                    </cell>
+                    <cell id="256">
+                        <label id="257">
+                            <text-property name="text">documento</text-property>
+                        </label>
+                    </cell>
+                    <cell id="258">
+                        <label id="259">
+                            <text-property name="text">nombre</text-property>
+                        </label>
+                    </cell>
+                    <cell id="260">
+                        <label id="261">
+                            <text-property name="text">apellido</text-property>
+                        </label>
+                    </cell>
+                    <cell id="262">
+                        <label id="263">
+                            <text-property name="text">legajo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="264">
+                        <label id="265">
+                            <text-property name="text">nombrec</text-property>
+                        </label>
+                    </cell>
+                    <cell id="266">
+                        <label id="267">
+                            <text-property name="text">fechainscripcionc</text-property>
+                        </label>
+                    </cell>
+                    <cell id="268">
+                        <label id="269">
+                            <text-property name="text">nombrea</text-property>
+                        </label>
+                    </cell>
+                    <cell id="270">
+                        <label id="271">
+                            <text-property name="text">fechainscripciona</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="272">
+                    <cell id="273">
+                        <data id="274">
+                            <property name="resultSetColumn">tipodoc</property>
+                        </data>
+                    </cell>
+                    <cell id="275">
+                        <data id="276">
+                            <property name="resultSetColumn">documento</property>
+                        </data>
+                    </cell>
+                    <cell id="277">
+                        <data id="278">
+                            <property name="resultSetColumn">nombre</property>
+                        </data>
+                    </cell>
+                    <cell id="279">
+                        <data id="280">
+                            <property name="resultSetColumn">apellido</property>
+                        </data>
+                    </cell>
+                    <cell id="281">
+                        <data id="282">
+                            <property name="resultSetColumn">legajo</property>
+                        </data>
+                    </cell>
+                    <cell id="283">
+                        <data id="284">
+                            <property name="resultSetColumn">nombrec</property>
+                        </data>
+                    </cell>
+                    <cell id="285">
+                        <data id="286">
+                            <property name="resultSetColumn">fechainscripcionc</property>
+                        </data>
+                    </cell>
+                    <cell id="287">
+                        <data id="288">
+                            <property name="resultSetColumn">nombrea</property>
+                        </data>
+                    </cell>
+                    <cell id="289">
+                        <data id="290">
+                            <property name="resultSetColumn">fechainscripciona</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="291">
+                    <cell id="292"/>
+                    <cell id="293"/>
+                    <cell id="294"/>
+                    <cell id="295"/>
+                    <cell id="296"/>
+                    <cell id="297"/>
+                    <cell id="298"/>
+                    <cell id="299"/>
+                    <cell id="300"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

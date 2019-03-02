@@ -1,0 +1,59 @@
+package service;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.TipoDoc;
+
+/**
+ * Servlet implementation class Main
+ */
+@WebServlet("/Main")
+public class main extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public main() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		PrintWriter out = response.getWriter();
+		TipoDoc tipoDoc = TipoDoc.valueOf(request.getParameter("tipoDoc"));
+		int doc = Integer.parseInt(request.getParameter("documento"));
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String direccion = request.getParameter("direccion");
+		Date fechaNac = new Date();
+		try {
+			fechaNac = format.parse(request.getParameter("fechaNacimiento"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		int legajo = Integer.parseInt(request.getParameter("legajo"));
+		DataBaseOperations dao = new DataBaseOperations();
+		
+		String s1 = dao.insertData(tipoDoc, doc, nombre, apellido, direccion, fechaNac, legajo);
+		if(s1.equals("success")){
+			out.println("data is inserted");
+			
+		}else{
+			out.println("some thing is going wrong");
+		}
+	}
+}

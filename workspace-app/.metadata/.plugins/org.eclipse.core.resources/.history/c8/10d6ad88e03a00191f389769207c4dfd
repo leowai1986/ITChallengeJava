@@ -1,0 +1,320 @@
+package service;
+
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import model.Alumno;
+import model.Carrera;
+import model.Curso;
+import model.Persona;
+import model.TipoDoc;
+import service.MyDb;
+
+public class DataBaseOperations {
+
+	MyDb db = new MyDb();
+	ArrayList<Alumno> al = new ArrayList<Alumno>();
+	Connection con = db.getCon();
+	PrintWriter out = response.getWriter();
+
+	public String checkData(TipoDoc tipoDoc, int documento, String nombre, String apellido, String direccion,
+			Date fechaNac, int legajo, int id) {
+		String tmp = "";
+		try {
+			PreparedStatement ps = con.prepareStatement("select * from alumno where identificador = ?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) // found
+			{
+				tmp = updateData(tipoDoc, documento, nombre, apellido, direccion, fechaNac, legajo, id);
+			} else {
+				if(getAlumnoByDoc(documento) == 0) {
+					out.println("Ya existe un alumno con ese Documento!");
+					return "Failed";
+				}
+				
+				if(getAlumnoByLegajo(legajo) == 0) {
+					out.println("Ya existe un alumno con ese Legajo!");
+					return "Failed";
+				}
+				tmp = insertData(tipoDoc, documento, nombre, apellido, direccion, fechaNac, legajo);
+			}
+		} catch (Exception ex) {
+			System.out.println("Error in check() -->" + ex.getMessage());
+		}
+		return tmp;
+	}
+
+	public String insertData(TipoDoc tipoDoc, int documento, String nombre, String apellido, String direccion,
+			Date fechaNac, int legajo) {
+		String temp = "";
+		int idPersona = 0;
+		java.sql.Date sqlFechaNac = new java.sql.Date(fechaNac.getTime());
+		String sql = "insert into persona(tipodoc, documento, nombre, apellido, fechanac, direccion) values(?, ?, ?, ?, ?, ?);";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, tipoDoc.toString().trim());
+			stmt.setInt(2, documento);
+			stmt.setString(3, nombre);
+			stmt.setString(4, apellido);
+			stmt.setDate(5, sqlFechaNac);
+			stmt.setString(6, direccion);
+			stmt.executeUpdate();
+
+			sql = "SELECT identificador FROM persona ORDER BY identificador DESC LIMIT 1";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				idPersona = Integer.parseInt(rs.getString("identificador"));
+			}
+			sql = "insert into alumno(idpersona, legajo) values(?, ?);";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, idPersona);
+			stmt.setInt(2, legajo);
+			stmt.executeUpdate();
+			temp = "success";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return temp;
+	}
+
+	public String updateData(TipoDoc tipoDoc, int documento, String nombre, String apellido, String direccion,
+			Date fechaNac, int legajo, int id) {
+		String temp = "";
+		java.sql.Date sqlFechaNac = new java.sql.Date(fechaNac.getTime());
+		String sql = "select * from alumno where identificador = ?;";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				String sqlUpdate = "update persona set tipodoc = ?, documento = ?, nombre = ?, apellido = ?, fechanac = ?, direccion = ? where identificador = ?;";
+				stmt = con.prepareStatement(sqlUpdate);
+				stmt.setString(1, tipoDoc.toString().trim());
+				stmt.setInt(2, documento);
+				stmt.setString(3, nombre);
+				stmt.setString(4, apellido);
+				stmt.setDate(5, sqlFechaNac);
+				stmt.setString(6, direccion);
+				stmt.setInt(7, rs.getInt("idPersona"));
+				stmt.executeUpdate();
+
+				sqlUpdate = "update alumno set legajo = ? where identificador = ?;";
+				stmt = con.prepareStatement(sqlUpdate);
+				stmt.setInt(1, legajo);
+				stmt.setInt(2, id);
+				stmt.executeUpdate();
+				temp = "success";
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return temp;
+	}
+
+	// .........show....................
+	public ArrayList<Alumno> showData() {
+		String sql = "select p.tipodoc, p.documento, p.nombre, p.apellido, p.direccion, p.fechanac, a.identificador, a.legajo from persona as p "
+				+ "left join alumno as a on a.idpersona = p.identificador";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Alumno alumno = new Alumno();
+				TipoDoc tipodoc = TipoDoc.valueOf(rs.getString("tipodoc").trim());
+				int documento = Integer.parseInt(rs.getString("documento"));
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date fechanac = new Date();
+				String direccion = rs.getString("direccion");
+				try {
+					fechanac = format.parse(rs.getString("fechanac"));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int id = Integer.parseInt(rs.getString("identificador"));
+				int legajo = Integer.parseInt(rs.getString("legajo"));
+
+				Persona persona = new Persona(tipodoc, documento, nombre, apellido, fechanac, direccion);
+
+				alumno.setPersona(persona);
+				alumno.setIdentificador(id);
+				alumno.setLegajo(legajo);
+				al.add(alumno);
+			}
+
+			for (int i = 0; i < al.size(); i++) {
+				System.out.println(al.get(i).getPersona() + " Legajo: " + al.get(i).getLegajo());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
+	}
+
+	public Alumno editAlumno(String id) {
+		String sql = "select p.tipodoc, p.documento, p.nombre, p.apellido, p.direccion, p.fechanac, a.legajo from persona as p "
+				+ "left join alumno as a on a.idpersona = p.identificador where a.identificador = ?";
+		Alumno alumno = new Alumno();
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, Integer.parseInt(id));
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				TipoDoc tipodoc = TipoDoc.valueOf(rs.getString("tipodoc").trim());
+				int documento = Integer.parseInt(rs.getString("documento"));
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date fechanac = new Date();
+				String direccion = rs.getString("direccion");
+				try {
+					fechanac = format.parse(rs.getString("fechanac"));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int legajo = Integer.parseInt(rs.getString("legajo"));
+
+				Persona persona = new Persona(tipodoc, documento, nombre, apellido, fechanac, direccion);
+
+				alumno.setPersona(persona);
+				alumno.setLegajo(legajo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return alumno;
+	}
+	
+	public ArrayList<Curso> cursoLista(int idCarrera) {
+		ArrayList<Curso> cu = new ArrayList<Curso>();
+		String sql = "select c.identificador, c.nombre "
+				+ "from curso as c";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Curso curso = new Curso();
+				int id = Integer.valueOf(rs.getString("identificador").trim());
+				String nombre = rs.getString("nombre");
+				
+				curso.setIdentificador(id);
+				curso.setNombre(nombre);
+				
+				cu.add(curso);
+			}
+
+			for (int i = 0; i < cu.size(); i++) {
+				System.out.println(cu.get(i).getIdentificador() + " Nombre: " + cu.get(i).getNombre());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cu;
+	}
+	
+	public String insertCurso(int idAlumno, int idCurso, Date fechaInsc) {
+		String temp = "";
+		java.sql.Date sqlFechaInsc = new java.sql.Date(fechaInsc.getTime());
+		String sql = "insert into inscripciones_curso(idalumno, idcurso, fechainscripcion) values(?, ?, ?);";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, idAlumno);
+			stmt.setInt(2, idCurso);
+			stmt.setDate(3, sqlFechaInsc);
+			stmt.executeUpdate();
+
+			temp = "success";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return temp;
+	}
+	
+	public ArrayList<Carrera> carreraLista() {
+		ArrayList<Carrera> ca = new ArrayList<Carrera>();
+		String sql = "select c.identificador, c.nombre "
+				+ "from carrera as c";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Carrera carrera = new Carrera();
+				int id = Integer.valueOf(rs.getString("identificador").trim());
+				String nombre = rs.getString("nombre");
+				
+				carrera.setIdentificador(id);
+				carrera.setNombre(nombre);
+				
+				ca.add(carrera);
+			}
+
+			for (int i = 0; i < ca.size(); i++) {
+				System.out.println(ca.get(i).getIdentificador() + " Nombre: " + ca.get(i).getNombre());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ca;
+	}
+	
+	public int getAlumnoByLegajo(int legajo) {
+		int id = 0;
+		String sql = "select a.identificador "
+				+ "from Alumno as a"
+				+ " where a.legajo = ?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, legajo);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				id = Integer.valueOf(rs.getString("identificador").trim());	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	public int getAlumnoByDoc(int doc) {
+		int id = 0;
+		String sql = "select a.identificador "
+				+ "from Alumno as a left join Persona as p on p.identificador = a.idPersona"
+				+ " where p.documento = ?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, doc);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				id = Integer.valueOf(rs.getString("identificador").trim());	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+}

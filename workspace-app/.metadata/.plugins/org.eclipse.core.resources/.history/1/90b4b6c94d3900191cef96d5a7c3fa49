@@ -1,0 +1,6 @@
+<jsp-config>
+    <taglib>
+        <taglib-uri>/birt.tld /taglib-uri>
+        <taglib-location>/WEB-INF/tlds/birt.tld /taglib-location>
+    </taglib>
+</jsp-config>

@@ -1,0 +1,93 @@
+package service;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.Alumno;
+import model.Persona;
+import model.TipoDoc;
+
+/**
+ * Servlet implementation class Main
+ */
+@WebServlet("/Main")
+public class main extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public main() {
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String forward="";
+        String action = request.getParameter("action");
+        DataBaseOperations dao = new DataBaseOperations();
+ 
+        if (action.equalsIgnoreCase("edit")){
+            forward = "index.jsp";
+            String id = request.getParameter("id");
+            Alumno alumno = dao.editAlumno(id);
+            Persona persona = alumno.getPersona();
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String fechaNac = formatter.format(persona.getFechaNacimiento());
+            request.setAttribute("alumno", alumno);
+            request.setAttribute("identificador", id);
+            request.setAttribute("fechaNacimiento", fechaNac);
+        }
+        
+        if (action.equalsIgnoreCase("enroll")){
+            forward = "index.jsp";
+            String id = request.getParameter("id");
+            Alumno alumno = dao.editAlumno(id);
+            request.setAttribute("alumno", alumno);
+            request.setAttribute("identificador", id);
+        }
+ 
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
+    }
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		PrintWriter out = response.getWriter();
+		TipoDoc tipoDoc = TipoDoc.valueOf(request.getParameter("tipoDoc"));
+		int doc = Integer.parseInt(request.getParameter("documento"));
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String direccion = request.getParameter("direccion");
+		Date fechaNac = new Date();
+		try {
+			fechaNac = format.parse(request.getParameter("fechaNacimiento"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		int legajo = Integer.parseInt(request.getParameter("legajo"));
+		int id = 0;
+		if(request.getParameter("identificador") != "") {
+			id = Integer.parseInt(request.getParameter("identificador"));
+		}
+		DataBaseOperations dao = new DataBaseOperations();
+		
+		String s1 = dao.checkData(tipoDoc, doc, nombre, apellido, direccion, fechaNac, legajo, id);
+		if(s1.equals("success")){
+			out.println("data is inserted");
+			response.sendRedirect("index.jsp");
+		}else{
+			out.println("some thing is going wrong");
+		}
+	}
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="Shell {Edit Data Source - Data Source}/Shell {workspace-app - ChallengeJava/src/report/comCurso.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Text Item}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="1002" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="561" key="DIALOG_HEIGHT"/>
+		<item value="708" key="DIALOG_X_ORIGIN"/>
+		<item value="285" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Text Item}/Shell {workspace-app - ChallengeJava/src/report/comCurso.rptdesign - Eclipse IDE}">
+		<item value="1002" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="561" key="DIALOG_HEIGHT"/>
+		<item value="708" key="DIALOG_X_ORIGIN"/>
+		<item value="285" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - inscCursos}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Data Binding}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="1181" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="571" key="DIALOG_HEIGHT"/>
+		<item value="619" key="DIALOG_X_ORIGIN"/>
+		<item value="279" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - promCarrera}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {SQL Query Builder &lt;estadoAlumno&gt;}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="104" key="DIALOG_X_ORIGIN"/>
+		<item value="277" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Source - Data Source}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - Data Set}/Shell {workspace-app - ChallengeJava/src/report/comCurso.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - estadoAlumno}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="1552" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="764" key="DIALOG_HEIGHT"/>
+		<item value="521" key="DIALOG_X_ORIGIN"/>
+		<item value="422" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - cursosAnteriores}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Data Binding}/Shell {workspace-app - ChallengeJava/src/report/comCurso.rptdesign - Eclipse IDE}">
+		<item value="1181" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="571" key="DIALOG_HEIGHT"/>
+		<item value="619" key="DIALOG_X_ORIGIN"/>
+		<item value="279" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - Data Set}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - inscCarreras}/Shell {workspace-app - ChallengeJava/src/report/estadoAlumno.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="Shell {Edit Data Set - Data Set1}/Shell {workspace-app - ChallengeJava/src/report/comCurso.rptdesign - Eclipse IDE}">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="640" key="SASHFORM.RIGHT"/>
+		<item value="160" key="SASHFORM.LEFT"/>
+		<item value="500" key="DIALOG_HEIGHT"/>
+		<item value="809" key="DIALOG_X_ORIGIN"/>
+		<item value="326" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

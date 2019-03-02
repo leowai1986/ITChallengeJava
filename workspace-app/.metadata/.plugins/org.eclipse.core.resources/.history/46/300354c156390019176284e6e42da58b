@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/WEB-INF/tlds/birt.tld" prefix="birt"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="service.*"%>
+<%@ page import="model.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link type="text/css" rel="stylesheet" href="css/homeCss.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+<title>Alumnos</title>
+<script>
+	$(document).ready(function() {
+		$("#insertButton").click(function() {
+			$("#insertForm").show();
+			$("#showRecord").hide();
+		});
+		$("#showButton").click(function() {
+			$("#insertForm").hide();
+			$("#showRecord").show();
+		});
+	});
+	
+	$( function() {
+	    $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+	});
+	
+	function isNumberKey(evt)
+    {
+       var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+
+       return true;
+    }
+</script>
+
+</head>
+<body>
+	<h1>DATA BASE OPERATION</h1>
+
+	<input type="submit" value="Add Record" id="insertButton">
+	<input type="submit" value="Show Record" id="showButton">
+
+	<form id="insertForm" action="Main" method="post" class="insertForm">
+		<pre>
+<table>
+<tr><td>Tipo de Documento: </td><td><select name="tipoDoc">
+	<option value="DNI" selected="selected">DNI</option>
+	<option value="LibretaCivica">Libreta Civica</option>
+</select></td></tr>
+<tr><td>Número de Documento: </td><td><input type="text" name="documento" onkeypress="return isNumberKey(event)" value="${alumno.persona.nroDoc}" ></td></tr>
+
+<tr><td>Nombre: </td><td><input type="text" name="nombre" value="${alumno.persona.nombre}"></td></tr>
+
+<tr><td>Apellido: </td><td><input type="text" name="apellido" value="${alumno.persona.apellido}"></td></tr>
+
+<tr><td>Dirección: </td><td><input type="text" name="direccion" value="${alumno.persona.direccion}"></td></tr>
+
+<tr><td>Fecha de Nacimiento: </td><td><input type="text" name = "fechaNacimiento" id = "datepicker" value="${fechaNacimiento}" /></td></tr>
+
+<tr><td>Legajo: </td><td><input type="text" name="legajo" onkeypress="return isNumberKey(event)" value="${alumno.legajo}" ></td></tr>
+</table>
+<input type="text" name="identificador" value="${identificador}" hidden="true" >
+<input type="submit" value="update">&nbsp;&nbsp;<a href="index.jsp">Cancel</a>
+</pre>
+	</form>
+
+	<p id="showRecord" class="showForm">
+		<%
+			DataBaseOperations dao = new DataBaseOperations();
+			ArrayList<Alumno> al = new ArrayList<Alumno>();
+			al = dao.showData();
+
+			for (int i = 0; i < al.size(); i++) {
+				out.println(al.get(i).getPersona() + " Legajo: " + al.get(i).getLegajo() + " - ");
+		%><a href="Main?action=edit&id=<% out.print(al.get(i).getIdentificador()); %>">Editar: <% out.println(al.get(i).getIdentificador()); %></a><br>
+		<%
+			}
+		%>
+	</p>
+	<birt:viewer id="birtViewer" reportDesign="estadoAlumno.rptdesign"
+		pattern="frameset"
+		height="450"
+		width="700"
+		format="html">
+		<birt:param name="param1" value='<%=out.print(al.get(1).getIdentificador())%>'></birt:param>
+	</birt:viewer>
+</body>
+</html>

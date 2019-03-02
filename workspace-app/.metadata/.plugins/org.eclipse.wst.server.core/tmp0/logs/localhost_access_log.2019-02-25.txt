@@ -1,0 +1,14 @@
+127.0.0.1 - - [25/Feb/2019:19:24:07 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:24:08 -0300] "GET /ChallengeJava/WEB-INF/classes/report/estadoAlumno.rptdesign HTTP/1.1" 404 967
+127.0.0.1 - - [25/Feb/2019:19:42:37 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:42:38 -0300] "GET /ChallengeJava/index.jsp HTTP/1.1" 500 2792
+127.0.0.1 - - [25/Feb/2019:19:58:09 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:58:10 -0300] "GET /ChallengeJava/index.jsp HTTP/1.1" 500 2792
+127.0.0.1 - - [25/Feb/2019:19:58:28 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:58:29 -0300] "GET /ChallengeJava/index.jsp HTTP/1.1" 200 5566
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:58:29 -0300] "GET /ChallengeJava/css/homeCss.css HTTP/1.1" 404 1031
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:19:58:29 -0300] "GET /resources/demos/style.css HTTP/1.1" 404 1027
+127.0.0.1 - - [25/Feb/2019:20:11:45 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:20:11:47 -0300] "GET /ChallengeJava/index.jsp HTTP/1.1" 200 5566
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:20:11:47 -0300] "GET /ChallengeJava/css/homeCss.css HTTP/1.1" 404 1031
+0:0:0:0:0:0:0:1 - - [25/Feb/2019:20:11:47 -0300] "GET /resources/demos/style.css HTTP/1.1" 404 1027

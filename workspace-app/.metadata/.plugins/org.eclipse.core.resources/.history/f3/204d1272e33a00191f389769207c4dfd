@@ -1,0 +1,67 @@
+package model;
+
+public class Curso {
+	
+	private int identificador;
+	private int idcarrera;
+	private String nombre;
+	private String descripcion;
+	private int cupomax;
+	private int año;
+	
+	public Curso() {
+		this.idcarrera = 1;
+		this.nombre = "Nombre Curso";
+		this.descripcion = "Descripción Curso";
+		this.cupomax = 10;
+		this.año = 2019;
+	}
+
+	public Curso(int idcarrera, String nombre, String descripcion, int cupomax, int año) {
+		this.idcarrera = idcarrera;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cupomax = cupomax;
+		this.año = año;
+	}
+	
+	public int getIdentificador() {
+		return identificador;
+	}
+	public void setIdentificador(int identificador) {
+		this.identificador = identificador;
+	}
+	public int getIdcarrera() {
+		return idcarrera;
+	}
+	public void setIdcarrera(int idcarrera) {
+		this.idcarrera = idcarrera;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public int getCupomax() {
+		return cupomax;
+	}
+	public void setCupomax(int cupomax) {
+		this.cupomax = cupomax;
+	}
+	public int getAño() {
+		return año;
+	}
+	public void setAño(int año) {
+		this.año = año;
+	}
+	
+	
+	
+}
